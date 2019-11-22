@@ -21,8 +21,6 @@ val permissions = arrayOf(Manifest.permission.CALL_PHONE, Manifest.permission.WR
     Manifest.permission.SEND_SMS,Manifest.permission.MODIFY_PHONE_STATE)//DODANE ostatnie dwie permissions************
 val listaKontaktow = arrayListOf<String>()
 val listaNumerow = arrayListOf<String>()
-var phoneNumber=""//DODANE************
-val text="wysłane z mojej pierwszej aplikacji mobilnej"//DODANE************
 
 class MainActivity : AppCompatActivity() {
     val requestSendSms:Int = 2///DODANE************
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val send = findViewById<Button>(R.id.send_button) //DODANE************
+
         var perm = hasPermissions()
 
         if(!perm){
@@ -41,30 +39,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = contactAdapter()
+        recyclerView.adapter = contactAdapter(this)//this
 
-        //po send jak nie ma "?" to wywala apkę
-        //DODANE************
-        //**********
+
     }
-    //DODANE************
-    //***************
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        //DODANE************
-        /*if(requestCode == requestSendSms)
-            sendSms()*/
-        //*******************
+    override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<out String>,grantResults: IntArray) {
         if(hasPermissions())
         {
             takeContacts()
             recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = contactAdapter()
+            recyclerView.adapter = contactAdapter(this)//this
         }
     }
 
@@ -74,24 +60,24 @@ class MainActivity : AppCompatActivity() {
             Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
             Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
     }
-    //DODANE************
+
     fun requestPermission(){
         ActivityCompat.requestPermissions(this, permissions,0)
     }
-    //******************
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     fun takeContacts(){
         val contentResolver = contentResolver
         val cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null,null)
-
+        var phoneNumber=""
         try{
-            //kursor jest zawsze na początku umieszczony na indeksie -1, stad chcey go umiescic na pierwszym indeksie
+
             cursor?.moveToFirst()
             while(!cursor?.isAfterLast!!){
                 //var phoneNumber=""
-                val contactId = cursor?.getString( cursor.getColumnIndex( ContactsContract.Contacts._ID ))
+                val contactId = cursor.getString( cursor.getColumnIndex( ContactsContract.Contacts._ID ))
                 var name = cursor?.getString( cursor.getColumnIndex( ContactsContract.Contacts.DISPLAY_NAME_PRIMARY ))
-                var hasPhone = cursor?.getString( cursor.getColumnIndex( ContactsContract.Contacts.HAS_PHONE_NUMBER ))
+                var hasPhone = cursor.getString( cursor.getColumnIndex( ContactsContract.Contacts.HAS_PHONE_NUMBER ))
 
                 if (hasPhone.equals("1", ignoreCase = true))
                     hasPhone = "true"
