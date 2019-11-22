@@ -22,7 +22,7 @@ val permissions = arrayOf(Manifest.permission.CALL_PHONE, Manifest.permission.WR
 val listaKontaktow = arrayListOf<String>()
 val listaNumerow = arrayListOf<String>()
 var phoneNumber=""//DODANE************
-val text="text"//DODANE************
+val text="wysłane z mojej pierwszej aplikacji mobilnej"//DODANE************
 
 class MainActivity : AppCompatActivity() {
     val requestSendSms:Int = 2///DODANE************
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val send = findViewById<Button>(R.id.send_button) //DODANE************
+        //val send = findViewById<Button>(R.id.send_button) //DODANE************
         var perm = hasPermissions()
 
         if(!perm){
@@ -116,7 +116,4 @@ class MainActivity : AppCompatActivity() {
             cursor?.close()
         }
     }
-
-
-
 }

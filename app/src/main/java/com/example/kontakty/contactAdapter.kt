@@ -1,6 +1,5 @@
 package com.example.kontakty
 
-import android.os.Debug
 import android.telephony.SmsManager
 import android.view.LayoutInflater
 import android.view.View
@@ -30,12 +29,13 @@ class contactAdapter: RecyclerView.Adapter<contactAdapter.MyViewHolder>() {
 
         name.text = listaKontaktow[position]
         number.text = listaNumerow[position]
+
         button.setOnClickListener{
-            sendSMS()
+            sendSMS(number.text.toString())
         }
     }
 
-    private fun sendSMS() {
-        SmsManager.getDefault().sendTextMessage(phoneNumber,null,text,null, null)
+    private fun sendSMS(number: String) {
+        SmsManager.getDefault().sendTextMessage(number,null,text,null, null)
     }
 }
