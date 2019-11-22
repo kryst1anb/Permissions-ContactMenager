@@ -29,12 +29,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = contactAdapter()
-
         val send = findViewById<Button>(R.id.send_button) //DODANE************
         var perm = hasPermissions()
 
@@ -50,20 +45,9 @@ class MainActivity : AppCompatActivity() {
 
         //po send jak nie ma "?" to wywala apkę
         //DODANE************
-        send.setOnClickListener {
-            if(ActivityCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS)!= PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this, permissions,requestSendSms)
-            }else{
-                sendSms()
-            }
-        }
         //**********
     }
     //DODANE************
-    fun sendSms() {
-        SmsManager.getDefault().sendTextMessage(phoneNumber,null,text,null, null)
-        Toast.makeText(this,"SMS send",Toast.LENGTH_SHORT).show()
-    }
     //***************
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -73,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         //DODANE************
-        if(requestCode == requestSendSms)
-            sendSms()
+        /*if(requestCode == requestSendSms)
+            sendSms()*/
         //*******************
         if(hasPermissions())
         {

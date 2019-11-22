@@ -1,10 +1,10 @@
 package com.example.kontakty
 
-import android.service.carrier.CarrierMessagingService
+import android.os.Debug
+import android.telephony.SmsManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.contact.view.*
@@ -26,8 +26,16 @@ class contactAdapter: RecyclerView.Adapter<contactAdapter.MyViewHolder>() {
 
         val name = holder.view.contact_name
         val number = holder.view.contact_number
+        val button = holder.view.send_button
 
-        name.setText(listaKontaktow[position])
-        number.setText(listaNumerow[position])
+        name.text = listaKontaktow[position]
+        number.text = listaNumerow[position]
+        button.setOnClickListener{
+            sendSMS()
+        }
+    }
+
+    private fun sendSMS() {
+        SmsManager.getDefault().sendTextMessage(phoneNumber,null,text,null, null)
     }
 }
