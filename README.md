@@ -3,6 +3,7 @@
 ## Znaczące funkcje aplikacji
 <details>
       <summary>Sprawdzenie uprawnień </summary>
+      
 ``` kotlin
      private fun hasPermissions(): Boolean{
         return ContextCompat.checkSelfPermission(this,
@@ -11,10 +12,13 @@
             Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
     }
 ```
+
 </details>
+
 <details>
      <summary>Pobranie listy kontaktów z telefonu</summary>
-``` Kotlin
+      
+``` kotlin
 fun takeContacts(){
         val contentResolver = contentResolver
         val cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null,null)
@@ -51,10 +55,11 @@ fun takeContacts(){
         }
     }
 ```
+
 </details>
 <details>
+      <summary>Wysyłanie SMSów oraz AlertDialog</summary>
 
-<summary>Wysyłanie SMSów oraz AlertDialog</summary>
 ``` kotlin
  override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
@@ -85,5 +90,7 @@ fun takeContacts(){
 
     }
 ```
+
 </details>
+
 ## test
