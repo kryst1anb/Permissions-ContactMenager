@@ -11,12 +11,12 @@
       <summary>Sprawdzenie uprawnień </summary>
       
 ``` kotlin
-     private fun hasPermissions(): Boolean{
-        return ContextCompat.checkSelfPermission(this,
-            Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-            Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-            Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
-    }
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 ```
 
 </details>
