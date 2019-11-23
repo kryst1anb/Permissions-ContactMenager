@@ -1,4 +1,6 @@
 # Permissions-ContactMenager
+## Aplikacja korzystająca z pozwoleń na wykład z AMSA
+Aplikacja służy to wysyłania SMSów
 
 ## Znaczące funkcje aplikacji
 <details>
@@ -93,4 +95,4 @@ fun takeContacts(){
 
 </details>
 
-## test
+## 
