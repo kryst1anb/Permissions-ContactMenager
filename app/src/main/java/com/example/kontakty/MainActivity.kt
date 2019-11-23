@@ -6,24 +6,20 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.telephony.SmsManager
-import android.widget.Button
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.contact.*
 
-//DODANE ostatnie dwie permissions************
+
 val permissions = arrayOf(Manifest.permission.CALL_PHONE, Manifest.permission.WRITE_CONTACTS,Manifest.permission.READ_CONTACTS,
-    Manifest.permission.SEND_SMS,Manifest.permission.MODIFY_PHONE_STATE)//DODANE ostatnie dwie permissions************
+    Manifest.permission.SEND_SMS,Manifest.permission.MODIFY_PHONE_STATE)
 val listaKontaktow = arrayListOf<String>()
 val listaNumerow = arrayListOf<String>()
 
 class MainActivity : AppCompatActivity() {
-    val requestSendSms:Int = 2///DODANE************
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +29,12 @@ class MainActivity : AppCompatActivity() {
 
         if(!perm){
             requestPermission()
-        }else
-        {
+        }else{
             takeContacts()
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = contactAdapter(this)//this
+        recyclerView.adapter = contactAdapter(this)
 
 
     }
@@ -49,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         if(hasPermissions()){
             takeContacts()
             recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = contactAdapter(this)//this
+            recyclerView.adapter = contactAdapter(this)
         }else{
             finish()
         }
@@ -71,11 +66,10 @@ class MainActivity : AppCompatActivity() {
         val contentResolver = contentResolver
         val cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null,null)
         var phoneNumber=""
-        try{
 
+        try{
             cursor?.moveToFirst()
             while(!cursor?.isAfterLast!!){
-                //var phoneNumber=""
                 val contactId = cursor.getString( cursor.getColumnIndex( ContactsContract.Contacts._ID ))
                 var name = cursor?.getString( cursor.getColumnIndex( ContactsContract.Contacts.DISPLAY_NAME_PRIMARY ))
                 var hasPhone = cursor.getString( cursor.getColumnIndex( ContactsContract.Contacts.HAS_PHONE_NUMBER ))
