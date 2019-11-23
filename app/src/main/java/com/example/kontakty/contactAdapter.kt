@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.contact.view.*
 
 class contactAdapter(private val context: MainActivity): RecyclerView.Adapter<contactAdapter.MyViewHolder>() {
 
-    val text = "wysłane z mojej pierwszej aplikacji mobilnej"
+    private val text = "wysłane z mojej pierwszej aplikacji mobilnej"
 
     class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
