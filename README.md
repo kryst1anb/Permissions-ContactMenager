@@ -1,6 +1,6 @@
 # Permissions-ContactMenager
 ## Aplikacja korzystająca z pozwoleń na wykład z AMSA
-Aplikacja służy to wysyłania SMSów. Pobrane zostają wszystkie kontakty z telefonu do listy Nazwa -> Nr telefonu
+Aplikacja służy to wysyłania SMSów. Początkowo wyświetlone zostaną wymagane uprawnienia, które są niezbędne do poprawnego działania aplikacji. Odmówienie któreś z nich powoduje zamknięcie aplikacji. Jak uprawnienia zostaną udzielone, pobrane zostają wszystkie kontakty z telefonu do listy: Nazwa - Nr telefonu. Próba wysłania uruchomi ``` AlertDialog ``` który zapyta się czy na pewno chcemy wiadomość wysłać.
 
 ## Znaczące funkcje aplikacji
 <details>
