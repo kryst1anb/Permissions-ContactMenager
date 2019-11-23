@@ -1,6 +1,6 @@
 # Permissions-ContactMenager
 
-## Fragmenty kodu
+## Znaczące funkcje aplikacji
 * Sprawdzenie uprawnień
 ``` kotlin
      private fun hasPermissions(): Boolean{
@@ -47,6 +47,38 @@ fun takeContacts(){
         }finally {
             cursor?.close()
         }
+    }
+```
+
+* Wysyłanie SMSów oraz AlertDialog
+``` kotlin
+ override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        val name = holder.view.contact_name
+        val number = holder.view.contact_number
+        val button = holder.view.send_button
+
+        name.text = listaKontaktow[position]
+        number.text = listaNumerow[position]
+
+        button.setOnClickListener {
+            val alertDialog: AlertDialog.Builder = AlertDialog.Builder(context)
+            alertDialog.setTitle("UWAGA!")
+            alertDialog.setMessage("Czy na pewno chcesz wysłać wiadomość? ")
+
+            alertDialog.setPositiveButton("NIE",DialogInterface.OnClickListener {
+                        dialog, which -> dialog.cancel()
+            })
+
+            alertDialog.setNegativeButton("TAK",DialogInterface.OnClickListener {
+                        dialog, which ->
+                sendSMS(number.text.toString())
+                Toast.makeText(context, "wysłano SMS do "+name.text, Toast.LENGTH_LONG).show()
+            })
+            val dialog: AlertDialog = alertDialog.create()
+            dialog.show()
+        }
+
     }
 ```
 ## test
