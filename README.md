@@ -1,6 +1,6 @@
 # Permissions-ContactMenager
 ## Aplikacja korzystająca z pozwoleń na wykład z AMSA
-Aplikacja służy to wysyłania SMSów
+Aplikacja służy to wysyłania SMSów. Pobrane zostają wszystkie kontakty z telefonu do listy Nazwa -> Nr telefonu
 
 ## Znaczące funkcje aplikacji
 <details>
