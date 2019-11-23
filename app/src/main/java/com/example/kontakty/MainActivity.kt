@@ -46,11 +46,12 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<out String>,grantResults: IntArray) {
-        if(hasPermissions())
-        {
+        if(hasPermissions()){
             takeContacts()
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = contactAdapter(this)//this
+        }else{
+            finish()
         }
     }
 

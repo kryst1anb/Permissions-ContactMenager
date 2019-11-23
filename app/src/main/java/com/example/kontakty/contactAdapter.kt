@@ -10,14 +10,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.contact.view.*
 
-
-//contex poniżej
 class contactAdapter(private val context: MainActivity): RecyclerView.Adapter<contactAdapter.MyViewHolder>() {
 
     val text = "wysłane z mojej pierwszej aplikacji mobilnej"
 
-    class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view){
-    }
+    class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.contact, parent, false)
