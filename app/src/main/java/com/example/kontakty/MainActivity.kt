@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         return ContextCompat.checkSelfPermission(this,
             Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
             Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-            Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+            Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED
     }
 
     fun requestPermission(){
